@@ -1,5 +1,4 @@
-# media-sound/youtui
-
+# media-sound/youtui - [nick42d/youtui](https://github.com/nick42d/youtui)
 Youtui - a simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation. Inspired by https://github.com/ccgauche/ytermusic/ and cmus.
 
 Ytmapi-rs - an asynchronous API for YouTube Music using Google's internal API, Tokio and Reqwest. Inspired by https://github.com/sigma67/ytmusicapi/.
