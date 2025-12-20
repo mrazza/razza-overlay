@@ -704,6 +704,7 @@ CRATES="
 "
 
 S="${WORKDIR}/${PN}-${PN}-v${PV}/${PN}"
+RUST_MIN_VER=1.90.0
 
 inherit cargo
 
@@ -711,8 +712,6 @@ DESCRIPTION="A simple TUI YouTube Music player"
 HOMEPAGE="https://github.com/nick42d/youtui"
 SRC_URI="https://github.com/nick42d/${PN}/archive/refs/tags/${PN}/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}"
-
-DEPEND=">=dev-lang/rust-1.90"
 
 LICENSE="MIT"
 # Dependent crate licenses
