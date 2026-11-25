@@ -60,9 +60,9 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXext
+	x11-libs/libXfixes
 	x11-libs/libXi
 	x11-libs/libXrandr
-	x11-libs/libXrender
 "
 
 DOTNET_PKG_PROJECTS=( "src/LeiterWatercolorStudio.App/LeiterWatercolorStudio.App.csproj" )
