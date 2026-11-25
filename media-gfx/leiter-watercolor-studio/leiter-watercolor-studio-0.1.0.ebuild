@@ -39,7 +39,7 @@ NUGETS="
 	tmds.dbus.protocol@0.21.3
 "
 
-inherit desktop dotnet-pkg multiprocessing xdg
+inherit desktop dotnet-pkg xdg
 
 DESCRIPTION="Desktop watercolor studio for Leiter photo watercolorization"
 HOMEPAGE="https://github.com/mrazza/LeiterWatercolorStudio"
@@ -103,34 +103,11 @@ src_prepare() {
 	done < <(find . -iname "Directory.Packages.props" -print0)
 }
 
-src_compile() {
-	local -a publish_args=(
-		--configuration "${DOTNET_PKG_CONFIGURATION}"
-		--no-restore
-		--no-self-contained
-		--output "${DOTNET_PKG_OUTPUT}"
-		--runtime "${DOTNET_PKG_RUNTIME}"
-		--verbosity "${DOTNET_VERBOSITY}"
-		-maxCpuCount:$(makeopts_jobs)
-		-p:PublishReadyToRun=true
-	)
-
-	if ! use debug ; then
-		publish_args+=(
-			-p:StripSymbols=true
-			-p:NativeDebugSymbols=false
-		)
-	fi
-
-	edotnet publish "${DOTNET_PKG_PROJECTS[0]}" "${publish_args[@]}"
-}
-
 src_install() {
 	dotnet-pkg-base_install
 
 	dotnet-pkg-base_append-launchervar "DOTNET_TieredPGO=1"
 	dotnet-pkg-base_append-launchervar "DOTNET_TC_QuickJitForLoops=1"
-	dotnet-pkg-base_append-launchervar "DOTNET_ReadyToRun=1"
 
 	dotnet-pkg-base_dolauncher "/usr/share/${P}/${MY_PN}" "${PN}"
 	dosym -r "/usr/bin/${PN}" "/usr/bin/${MY_PN}"
